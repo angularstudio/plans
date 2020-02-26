@@ -1,0 +1,102 @@
+:host {
+
+    .wrapper {
+
+        border-radius: 4px;
+        padding: 15px;
+
+        .top {
+
+            padding: 50px;
+
+            text-align: center;
+
+            .title, .description {
+
+                margin-bottom: 15px;
+
+            }
+
+        }
+
+        .plans {
+
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+
+            .plan {
+
+                flex: 1;
+                margin: 20px 5px;
+                padding: 20px;
+                border: 1px solid #999;
+                border-radius: 4px;
+                cursor: pointer;
+
+                &:hover {
+
+                    border-color: #fff;
+
+                }
+
+                .icon {
+
+                    border-radius: 50%;
+                    border: 2px solid #fff;
+                    width: 30px;
+                    height: 30px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 5px;
+                    margin: -40px 0 20px 0;
+
+                    i {
+
+                        font-size: 20px;
+
+                    }
+
+                }
+
+                .title, .price {
+
+                    margin-bottom: 15px;
+
+                }
+
+                .price {
+
+                    font-size: 30px;
+
+                    span {
+
+                        font-size: 16px;
+
+                    }
+
+                }
+
+                .button {
+
+                    display: flex;
+                    align-items: center;
+                    margin-top: 15px;
+
+                }
+
+            }
+
+        }
+
+        .footer {
+
+            text-align: center;
+            padding: 40px;
+
+        }
+
+    }
+
+}
