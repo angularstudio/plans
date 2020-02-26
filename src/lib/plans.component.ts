@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { Plans }            from './plans';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Plan }                                   from './plan';
+import { Plans }                                  from './plans';
 
 @Component({
 
@@ -8,24 +9,29 @@ import { Plans }            from './plans';
     template: `
 
         <div class="wrapper"
-             [style.background-image]="config.backgroundImage"
-             [style.background-color]="config.backgroundColor">
+             [class.mat-elevation-z6]="config.shadow"
+             [style.background-color]="config.backgroundColor"
+             [style.background-image]="config.backgroundImage">
 
             <div class="top">
 
                 <div class="title"
+                     [style.color]="config.titleFontColor"
                      [style.font-size]="config.titleFontSize">{{ config.title }}</div>
 
                 <div class="description"
+                     [style.color]="config.descriptionFontColor"
                      [style.font-size]="config.descriptionFontSize">{{ config.description }}</div>
 
             </div>
 
-            <div class="plans">
+            <div class="plans" matRipple>
 
                 <div *ngFor="let plan of config.plans"
                      [style.border-color]="plan.borderColor"
                      [style.background-color]="plan.backgroundColor"
+                     [class.mat-elevation-z6]="config.shadow"
+                     (click)="onPlanClick.emit(plan)"
                      class="plan">
 
                     <div class="icon" [style.background-color]="plan.iconBackgroundColor">
@@ -35,9 +41,9 @@ import { Plans }            from './plans';
 
                     </div>
 
-                    <div class="title">{{ plan.title }}</div>
+                    <div class="title" [style.color]="plan.titleFontColor">{{ plan.title }}</div>
 
-                    <div class="price">
+                    <div class="price" [style.color]="plan.priceFontColor">
 
                         {{ plan.price }}
 
@@ -55,6 +61,17 @@ import { Plans }            from './plans';
                             {{ detail }}
 
                         </div>
+
+                    </div>
+
+                    <div *ngIf="plan.button" class="button">
+
+                        <button [style.background-color]="plan.buttonBackgroundColor"
+                                mat-raised-button>
+
+                            {{ plan.button }}
+
+                        </button>
 
                     </div>
 
@@ -77,5 +94,7 @@ import { Plans }            from './plans';
 export class PlansComponent {
 
     @Input() public config: Plans;
+
+    @Output() public onPlanClick: EventEmitter<Plan> = new EventEmitter();
 
 }
